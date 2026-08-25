@@ -36,6 +36,7 @@ interface NavbarProps {
   onOpenInventory: () => void;
   onOpenCompetitors: () => void;
   onRerunAnalysis: () => void;
+  onStartNewAnalysis: () => void;
   onOpenHowItWorks: () => void;
 }
 
@@ -47,6 +48,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenInventory,
   onOpenCompetitors,
   onRerunAnalysis,
+  onStartNewAnalysis,
   onOpenHowItWorks
 }) => {
   const tabs: { id: NavTab; label: string; icon: React.FC<{ className?: string }>; badge?: number | string }[] = [
@@ -99,6 +101,17 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {state && (
               <>
+                <button
+                  id="nav-btn-new-analysis"
+                  onClick={onStartNewAnalysis}
+                  disabled={isLoading}
+                  className="flex items-center space-x-1.5 px-3 py-1.5 rounded-md text-xs font-semibold text-emerald-300 hover:text-white bg-emerald-950/80 hover:bg-emerald-900/90 border border-emerald-700/60 transition disabled:opacity-50"
+                  title="Clear the current results and analyze a different website"
+                >
+                  <Globe className="w-3.5 h-3.5" />
+                  <span className="hidden sm:inline">New Site Analysis</span>
+                </button>
+
                 <button
                   id="nav-btn-inventory"
                   onClick={onOpenInventory}

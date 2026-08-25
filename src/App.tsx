@@ -27,6 +27,8 @@ import { TopicalMapView } from './components/TopicalMapView';
 import { ExportView } from './components/ExportView';
 import { WebsiteInventoryModal } from './components/WebsiteInventoryModal';
 import { CompetitorsModal } from './components/CompetitorsModal';
+import { Footer } from './components/Footer';
+import { HowItWorksModal } from './components/HowItWorksModal';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<NavTab>('project');
@@ -41,6 +43,27 @@ export default function App() {
   // Modals state
   const [isInventoryOpen, setIsInventoryOpen] = useState(false);
   const [isCompetitorsOpen, setIsCompetitorsOpen] = useState(false);
+  const [isHowItWorksOpen, setIsHowItWorksOpen] = useState(false);
+
+  const handleStartNewAnalysis = () => {
+    if (!window.confirm('Start a new site analysis? This clears the current on-screen results. Export anything you want to keep first.')) return;
+    setState({
+      project: {
+        projectName: '', industry: '', businessDescription: '', productsServices: '', targetAudience: '',
+        targetCountry: '', targetLanguage: 'English', websiteDomain: '', competitorDomains: [], seedTopics: '', targetCities: []
+      },
+      businessProfile: {
+        coreBusinessEntity: '', mainProductsServices: [], primaryAudience: '', customerProblems: [],
+        customerJourney: { awareness: [], consideration: [], decision: [], retention: [] },
+        commercialTopics: [], informationalTopics: [], locationRelatedTopics: [], outsideScopeTopics: []
+      },
+      existingPages: [], competitors: [], keywords: [], clusters: [], mappings: [], gaps: [], topicalMap: [],
+      updatedAt: new Date().toISOString()
+    });
+    setActiveTab('project');
+    setStatusMessage('Ready for a new website analysis.');
+    setTimeout(() => setStatusMessage(null), 3000);
+  };
 
   // Run full pipeline analysis
   const handleRunFullAnalysis = async () => {
@@ -238,6 +261,8 @@ export default function App() {
         onOpenInventory={() => setIsInventoryOpen(true)}
         onOpenCompetitors={() => setIsCompetitorsOpen(true)}
         onRerunAnalysis={handleRunFullAnalysis}
+        onStartNewAnalysis={handleStartNewAnalysis}
+        onOpenHowItWorks={() => setIsHowItWorksOpen(true)}
       />
 
       {/* Main View Router */}
@@ -328,6 +353,13 @@ export default function App() {
         )}
       </main>
 
+      <Footer
+        onOpenHowItWorks={() => setIsHowItWorksOpen(true)}
+        onNavigateTab={setActiveTab}
+        onOpenInventory={() => setIsInventoryOpen(true)}
+        onOpenCompetitors={() => setIsCompetitorsOpen(true)}
+      />
+
       {/* Crawled Inventory Modal */}
       <WebsiteInventoryModal
         isOpen={isInventoryOpen}
@@ -342,6 +374,12 @@ export default function App() {
         isOpen={isCompetitorsOpen}
         onClose={() => setIsCompetitorsOpen(false)}
         competitors={state.competitors}
+      />
+
+      <HowItWorksModal
+        isOpen={isHowItWorksOpen}
+        onClose={() => setIsHowItWorksOpen(false)}
+        onNavigateTab={setActiveTab}
       />
     </div>
   );
