@@ -1,0 +1,6 @@
+{
+  "name": "Topical Map & Content Gap Finder",
+  "description": "AI-powered SEO research platform to discover keywords, group intent-based clusters, crawl websites, analyze competitor gaps, and generate structured topical maps.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
