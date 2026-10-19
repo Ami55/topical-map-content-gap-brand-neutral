@@ -37,7 +37,7 @@ export default function App() {
 
   // Initialize with a complete sample analysis while keeping the product brand-neutral.
   const [state, setState] = useState<FullProjectState>(() => {
-    return getInitialProjectState(PRESETS.toursbylocals.input);
+    return getInitialProjectState(PRESETS.exampleTravel.input);
   });
 
   // Modals state

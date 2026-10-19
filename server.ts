@@ -474,7 +474,7 @@ function generateFallbackBusinessProfile(project: any) {
   
   if (isTravel) {
     return {
-      coreBusinessEntity: project.projectName || "ToursByLocals Marketplace",
+      coreBusinessEntity: project.projectName || "Target Marketplace",
       mainProductsServices: [
         "Private local guided tours",
         "Customized walking and food tours",
@@ -885,7 +885,7 @@ function generateFallbackClusters(keywords: any[], project: any) {
 }
 
 function generateFallbackMappings(clusters: any[], existingPages: any[]) {
-  const domain = existingPages[0]?.url ? new URL(existingPages[0].url).origin : 'https://www.toursbylocals.com';
+  const domain = existingPages[0]?.url ? new URL(existingPages[0].url).origin : 'https://example.com';
   
   return [
     {
@@ -1111,7 +1111,7 @@ function generateFallbackGaps(project: any, clusters: any[], mappings: any[], co
 }
 
 function generateFallbackTopicalMap(project: any, clusters: any[], mappings: any[], gaps: any[], existingPages: any[]) {
-  const domain = project.websiteDomain?.replace(/\/$/, '') || 'https://www.toursbylocals.com';
+  const domain = project.websiteDomain?.replace(/\/$/, '') || 'https://example.com';
 
   return [
     {
@@ -1330,7 +1330,7 @@ function generateFallbackTopicalMap(project: any, clusters: any[], mappings: any
           targetPageName: 'Private Tours Homepage',
           targetUrl: `${domain}/`,
           linkRelationship: 'Parent',
-          suggestedAnchorText: ['ToursByLocals private guides', 'home'],
+          suggestedAnchorText: ['private guides', 'home'],
           reasonForLink: 'Top-level navigation hierarchy.'
         }
       ]
@@ -1421,7 +1421,7 @@ function generateFallbackTopicalMap(project: any, clusters: any[], mappings: any
           targetPageName: 'Private Tours Homepage',
           targetUrl: `${domain}/`,
           linkRelationship: 'Parent',
-          suggestedAnchorText: ['find local private guides', 'ToursByLocals private tours'],
+          suggestedAnchorText: ['find local private guides', 'private tours'],
           reasonForLink: 'Hierarchy anchor.'
         }
       ]
