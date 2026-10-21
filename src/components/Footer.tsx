@@ -116,7 +116,7 @@ export const Footer: React.FC<FooterProps> = ({
         <div className="pt-4 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
           <div className="flex items-center space-x-1.5 text-slate-400">
             <span className="font-medium text-slate-300">© 2026 Topical Map &amp; Content Gap Finder.</span>
-            <span>Developed by <span className="text-emerald-400 font-semibold">Ami - SEO Girl</span>. All rights reserved.</span>
+            <span>Developed by <span className="text-emerald-400 font-semibold"><strong>SEO Girl - Ami</strong></span>. All rights reserved.</span>
           </div>
 
           <div className="flex items-center space-x-2 text-slate-500 text-[11px]">
